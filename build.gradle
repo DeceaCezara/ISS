@@ -1,0 +1,59 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.4'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'application'
+
+	id 'org.javamodularity.moduleplugin' version '1.8.12'
+	id 'org.openjfx.javafxplugin' version '0.0.13'
+	id 'org.beryx.jlink' version '2.25.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation('org.controlsfx:controlsfx:11.1.2')
+	implementation('com.dlsc.formsfx:formsfx-core:11.5.0') {
+		exclude(group: 'org.openjfx')
+	}
+	implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+
+	implementation "org.springframework.boot:spring-boot-starter-web:3.0.6"
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.6'
+
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.1'
+
+	implementation 'org.openjfx:javafx-controls:16'
+	implementation 'org.openjfx:javafx-fxml:16'
+
+
+
+}
+
+javafx {
+	version = '19'
+	modules = ['javafx.controls', 'javafx.fxml']
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+
+application {
+	mainClass = 'com.example.demo.HelloApplication'
+}
